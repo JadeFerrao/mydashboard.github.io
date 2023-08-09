@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+                                                    /* Side Bar CSS */
+body 
+{
+  font-family: "Lato", sans-serif;
+}
+
+
+.main {
+  margin-left: 200px; 
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: rgb(250, 254, 254);
+    box-shadow: 0 0 8px rgb(230, 230, 230); 
+    overflow: hidden; 
+    overflow-y: auto;
+    position: fixed; 
+    padding: 15px;
+    transition: width 0.3s ease;
+}
+
+.sidebar a {
+  padding: 20px 15px; 
+  text-decoration: none;
+  font-size: 20px;
+  color: pink;
+  display: block;
+}
+
+.sidebar .dropdown {
+  position: relative;
+}
+
+.sidebar .dropdown-content {
+  display: none;
+  position: relative; 
+  background-color: white;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+.sidebar .dropdown.active .dropdown-content {
+  display: block;
+}
+
+.sidebar .dropdown-content a {
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  color: grey;
+}
+
+.sidebar .dropdown.active .dropdown-content {
+  display: block;
+}
+
+.logo {
+    text-align: center; 
+    font-size: 10px; 
+}
+
+.avtar {
+    position: relative;
+}
+
+.avtar-img { 
+    position: fixed;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.nav-link {
+    margin-left: -20px;
+    cursor: pointer;
+}
+
+.sidebar a:hover {
+  color: rgb(177, 75, 158);
+}
+
+.name-pos {
+  padding: 9px;
+  padding-bottom: 2px;
+  text-align: left; 
+  padding-left: 75px;
+  color: pink;
+}
+
+.hr-line {
+    border-top: 1px solid grey;
+    margin-top: 10px;
+}
+
+
+.sidebar-divider {
+    border-top: 1px solid grey;
+    margin: 10px 0;
+}
+
+
+.sidebar.collapsed {
+  width: 60px;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed .fa {
+  font-size: 24px;
+  margin-right: 10px;
+  transition: width 0.3s ease;
+}
+
+
+.sidebar.collapsed a span {
+  display: none;
+}
+
+.sidebar.collapsed a i {
+  font-size: 25px;
+}
+
+
+
+
+.sidebar.collapsed a.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.sidebar.collapsed a.nav-link i {
+  font-size: 24px;
+  padding-left: 15px;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed .avtar {
+  margin-bottom: 70px; /* You can adjust the value to control the spacing */
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed .name-pos {
+  display: none;
+}
+
+.sidebar.collapsed .sidebar a {
+  padding-top: 15px;
+  transition: width 0.3s ease;
+}
+
+/* Add this rule to keep the sidebar divider while collapsed */
+.sidebar.collapsed .sidebar-divider {
+  display: none;
+}
+
+
+
+/* Dropdown caret button */
+.caret,
+.collapsible-caret {
+  position: relative; 
+  float: right; 
+  top: 30%;
+  transform: translateY(-50%); 
+  font-size: 10px; 
+}
+
+.caret:before,
+.collapsible-caret:before {
+  content: "\25BC";
+  display: inline-block;
+  transform: translateX(3px);
+  right: 0; 
+  position: absolute; 
+  font-size: 10px; 
+}
+
+
+.collapsible-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.collapsible-content {
+  display: none;
+  width: 100%; 
+  max-width: 400px; 
+}
+
+.collapsible-content a:first-child {
+  padding-top: 16px;
+}
+
+.collapsible-content a {
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  color: rgb(144, 226, 239);
+}
+
+
+
+
+                                                    /* NAV Bar CSS */
+
+header{
+    margin-left: 250px;
+    padding: 5px;
+    box-shadow: 0 0 5px rgb(230, 230, 230) ; 
+    min-height: 50px;
+    width: auto;
+    position: relative;
+}                     
+
+header .head_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-part form {
+    width: 290px;
+    height: 45px;
+    position: relative;
+}
+
+.right-part form input{
+    width: 90%;
+    height: 50%;
+    border: none;
+    box-shadow: 0 0 8px whitesmoke;
+    padding: 10px 15px;
+}
+
+.right-part form input:focus {
+    box-shadow: 0 0 8px whitesmoke;
+}
+
+.right-part form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 90%; 
+    padding-top: 5px;
+    text-align: center;
+    font-size: 22px;
+    color: white;
+    background-color: pink;
+    border: none;
+    cursor: pointer;
+}
+
+.left-part ul {
+    display: flex;
+    align-items: center;
+}
+
+.left-part ul li {
+    margin-left: 30px;
+}
+
+.left-part ul li span {
+    cursor: pointer;
+}
+
+.left-part ul li span i {
+    font-size: 20px;
+    color: pink;
+}
+
+.left-part ul li span:hover {
+    color: rgb(203, 132, 203);
+}
+
+.have_dots span {
+    position: relative;
+}
+
+.have_dots span::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -14px;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 60px;
+}
+
+.fa.fa-envelope, .fa.fa-bells ,.fa.fa-list{
+    color: pink;
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px; 
+    font-size: 20px;
+  }
+
+  .fa.fa-envelope:hover {
+    color: purple; 
+    background-color: #d2a1e0; 
+  }
+
+  .fa.fa-bell:hover {
+    color: purple; 
+    background-color: #d2a1e0; 
+    border-radius: 50%;
+    padding: 10px; 
+  }
+
+  .fa.fa-list:hover {
+    color: purple; 
+    background-color: #d2a1e0; 
+  }
+
+  /* new */
+.fa.fa-bars {
+    color: pink;
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px; 
+    font-size: 20px;
+  }
+
+  .fa.fa-bars:hover {
+    color: purple; 
+    background-color: #d2a1e0; 
+  }
+
+                                               /* Card css */
+.main-content {
+    margin: -20px;
+    margin-left: 230px;
+    padding:-18px;            
+}
+
+.info-card {
+  width: 95%;
+  padding: 35px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+
+.card {
+  padding: 10px; 
+  width: auto;
+  display: flex;
+  align-items: center;
+  color: #e9f7f9;
+  justify-content: space-between;
+  background:  #efac83; 
+  border-radius: 10px;
+  box-shadow: 0 7px 25px 0 rgba(211, 202, 202, 0.08);
+}
+
+.card:nth-child(2) {
+  background: #e0d09e;
+}
+
+.card:nth-child(3) {
+  background: #95cbdb;
+}
+
+.card:nth-child(4) {
+  background:#efa2c1 ;
+}
+
+.card-icon {
+  margin-bottom: 15px;
+  font-size: 25px;
+  width: 70px;
+  height: 70px;
+  background-color: rgba(253, 250, 250, 0.4); 
+  color:#56b189;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card-detail {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-detail h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.card-detail h2 {
+  margin: 10px 0;
+  font-size: 32px;
+  color: #f93d46; 
+}
+
+.card-detail p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.card-detail span {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 16px;
+  color: #007bff; 
+  cursor: pointer;
+}
+
+.card-detail i.fa-refresh {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+                                               /* Main body chart css */
+
+.charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 80px; 
+  width: 90%;
+  padding: 20px; 
+  padding-top: 0;
+  margin-top: -4px;
+}
+
+.chart{
+  background: #fff;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08); 
+  width: 100%;
+  
+}
+
+
+.chart h2 {
+  margin-bottom: 5px; 
+  font-size: 20px;
+  color: #666;
+  text-align: center;
+}
+
+                                                    /* To-do css */
+
+
+.todo{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.todo-value{
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1em; 
+  font-weight: bold;
+  flex-grow: 1;
+  color: #84d4b4;
+}
+
+.todo:has(.todo-checkbox:checked) {
+  color: #555555;
+  background: #eeeeee;
+  text-decoration: line-through;
+  order: 1;
+}
+
+.container h2 {
+  margin-bottom: 5px; 
+  font-size: 20px;
+  color: #666;
+  text-align: left;
+  padding: 15px;
+}
+
+                                            /* Nav bar dropdown css */
+
+
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown1-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f3f3;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(158, 220, 224, 0.2);
+  z-index: 1;
+  right: 0;
+  border-radius: 7px;
+}
+
+.dropdown1-content a {
+  color: rgb(110, 185, 192);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  position: center;
+}
+
+.dropdown1-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown1:hover .dropdown1-content {
+  display: block;
+}
+
+.slide-left {
+  margin-left: 100px;
+  transition: margin-left 0.3s ease;
+}
+
+
+
+
+/* Media Query for Mobile Screens */
+@media screen and (max-width: 768px) {
+  
+
+  /* Nav Bar */
+  header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 2; /* Ensure nav-bar is above sidebar */
+  }
+
+  .main-contents {
+    margin-top: 20px;
+  }
+  
+  .right-part form {
+    width: calc(100% - 50px); /* Adjust to prevent overlap with sidebar */
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+
+  .right-part form input {
+    width: 100%;
+  }
+
+  .right-part form button {
+    width: auto;
+    padding: 8px 15px;
+  }
+
+  .left-part ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 2; /* Ensure hover dropdown is above sidebar */
+  }
+
+  .left-part ul li {
+    margin-left: 15px;
+  }
+
+  /* Info Cards */
+  .info-card {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 95%; /* Adjust card width */
+    margin-bottom: 10px; /* Add margin between cards */
+  }
+
+  /* Charts */
+  .charts {
+    display: block;
+    padding: 10px;
+  }
+
+  .chart {
+    width: calc(100% - 20px); /* Adjust chart width with smaller padding */
+    padding: 5px; /* Adjust chart padding */
+    margin-bottom: 10px;
+  }
+
+  /* To-Do List */
+  .todo {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .todo-value {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    flex-grow: 1;
+    color: #84d4b4;
+  }
+
+  .todo:has(.todo-checkbox:checked) {
+    color: #555555;
+    background: #eeeeee;
+    text-decoration: line-through;
+    order: 1;
+  }
+
+}
+
+
+
+
+</style>
+</head>
+<body>
+                                            <!--Actual Body -->
+
+<!--side bar -->
+<div class="sidebar">
+
+    <div class="logo"> 
+        <img src="logo.png" width="60" height="60"></a>
+    </div> 
+    <hr class="sidebar-divider">
+    <div class="avtar" >
+        <div class="avtar-img" >
+            <img src="avtar.png" width="50" height="50">
+        </div> 
+    
+        <div class="name-pos">
+            <h3 class="nav-link" onclick="toggleCollapsible(this)"><span>Jaden Ferrao</span>
+              <span class="collapsible-caret"></span>  
+            </h3>
+            <div class="collapsible-content">
+                <a href="#"><i class="fa fa-user"></i>Profile</a>
+                <a href="#"><i class="fa fa-pencil"></i>Edit</a>
+                <a href="#"><i class="fa fa-sign-out"></i>SignOut</a>
+            </div>
+        </div> 
+    </div> 
+    <hr class="sidebar-divider">
+
+<!--side bar dropdown-->
+  <div class="dropdown">
+    <a href="#home" class="nav-link">
+      <i class="fa fa-fw fa-home"></i> <span>Dashboard</span>
+    </a>
+  </div>
+  
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-wrench"></i> <span>Components</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">Button</a>
+      <a href="#">Grids</a>
+      <a href="#">Layers</a>
+    </div>
+  </div>
+  
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-desktop"></i> <span>Forms</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">Form1</a>
+      <a href="#">Form2</a>
+      <a href="#">Form3</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-puzzle-piece"></i> <span>Tables</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">Table1</a>
+      <a href="#">Table2</a>
+      <a href="#">Table3</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-globe"></i> <span>Maps</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">Map1</a>
+      <a href="#">Map2</a>
+      <a href="#">Map3</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-file"></i><span>Pages</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">Page1</a>
+      <a href="#">Page2</a>
+      <a href="#">Page3</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-book"></i><span>Charts</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">chart1</a>
+      <a href="#">chart2</a>
+      <a href="#">chart3</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#" class="nav-link" onclick="toggleCollapsible(this)">
+      <i class="fa fa-fw fa-calendar"></i><span>Calendar</span>
+      <span class="collapsible-caret"></span>
+    </a>
+    <div class="collapsible-content">
+      <a href="#">calendar1</a>
+      <a href="#">calendar2</a>
+      <a href="#">calendar3</a>
+    </div>
+  </div>
+
+</div>
+
+
+<!--nav bar-->
+<header>
+  <div class="head_inner">
+
+<!--sidebar toggle button-->
+    <a href="#" id="toggle-sidebar">
+      <span><i class="fa fa-bars"></i></span>
+    </a>
+
+<!--search box-->
+    <div class="right-part">
+      <form>
+        <input type="text" placeholder="Search..." required>
+        <button><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+<!-- notification icons-->
+    <div class="left-part">
+      <div class="dropdown1">
+        <ul>
+          <li>
+            <a href="#" class="nav-link">
+              <span><i class="fa fa-envelope"></i></span>
+            </a>
+            <div class="dropdown1-content">
+              <a href="#"> <i class="fa fa-plus"></i> Create</a>
+              <a href="#"> <i class="fa fa-pencil"></i> Edit</a>
+              <a href="#"> <i class="fa fa-trash"></i> Delete</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown1">
+        <ul>
+          <li class="have_dots">
+            <a href="#" class="nav-link">
+              <span><i class="fa fa-bell"></i></span>
+            </a>
+            <div class="dropdown1-content">
+              <a href="#"> <i class="fa fa-exclamation-circle"></i> Notify 1</a>
+              <a href="#"> <i class="fa fa-exclamation-circle"></i> Notify 2</a>
+              <a href="#"> <i class="fa fa-exclamation-circle"></i> Notify 3</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown1">
+        <ul>
+          <li class="bar">
+            <a href="#" class="nav-link">
+              <span><i class="fa fa-list"></i></span>
+            </a>
+            <div class="dropdown1-content">
+              <a href="#"> <i class="fa fa-question-circle"></i> Help center</a>
+              <a href="#"> <i class="fa fa-cog"></i> Settings</a>
+              <a href="#"> <i class="fa fa-lock"></i> Lockscreen</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+
+<!-- Main content-->
+<!--Card box-->
+<div class="main-content">
+  <div class="info-card">
+      <div class="card">
+          <div class="card-icon">
+              <span><i class="fa fa-briefcase"></i></span>
+          </div>
+          <div class="card-detail">
+              <h4>Numbers</h4> 
+              <h2>150GB</h2>
+              <p>Updated Now <span><i class="fa fa-refresh"></i></span></p>
+          </div>
+      </div>
+
+      <div class="card">
+          <div class="card-icon">
+              <span><i class="fa fa-bug"></i></span>
+          </div>
+          <div class="card-detail">
+              <h4>Errors</h4> 
+              <h2>23</h2>
+              <p>Last Day <span><i class="fa fa-clock-o"></i></span></p>
+          </div>
+      </div>
+
+      <div class="card">
+          <div class="card-icon">
+              <span><i class="fa fa-money"></i></span>
+          </div>
+          <div class="card-detail">
+              <h4>Revenue</h4> 
+              <h2>$1,345</h2>
+              <p>New updates <span><i class="fa fa-calendar"></i></span></p>
+          </div>
+      </div>
+
+      <div class="card">
+          <div class="card-icon">
+              <span><i class="fa fa-users"></i></span>
+          </div>
+          <div class="card-detail">
+              <h4>Followers</h4> 
+              <h2>+ 50k</h2>
+              <p>Updated Now <span><i class="fa fa-refresh"></i></span></p>
+          </div>
+      </div>
+  </div>
+
+  <!--Chart box-->
+  <div class="charts">
+    <div class="chart">
+      <h2>Users Behavior</h2>
+      <canvas id="lineChart" width="520" height="300"></canvas>
+    </div>
+
+    <div class="chart" id="doughnut-chart">
+      <h2>Email Statistics</h2>
+      <canvas id="doughnut"></canvas>
+    </div>
+
+    <div class="chart">
+      <h2>2014 Sales</h2>
+      <canvas id="bar" width="520" height="300"></canvas>
+    </div>
+
+    <!--To do list-->
+    <div class="chart">
+      <h2>Tasks</h2>
+      
+      <div class="todo">
+        <input class="todo-checkbox" type="checkbox">
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Organize meetings with clients"> 
+      </div>
+
+      <div class="todo">
+        <input class="todo-checkbox" type="checkbox">
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Send e-mails to clients"> 
+      </div>
+
+      <div class="todo">
+        <input class="todo-checkbox" type="checkbox">
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Create 4 invisible users"> 
+      </div>
+
+      <div class="todo">
+        <input class="todo-checkbox" type="checkbox">
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Unfollow 5 enemies from twitter"> 
+      </div>
+
+      <div class="todo">
+        <input class="todo-checkbox" type="checkbox">
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Completed international project"> 
+      </div>
+
+    </div>
+
+  </div>
+  
+</div>
+</div>
+
+
+
+<!--ChartJS link-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
+<script src="chart1.js"></script>
+<script src="chart2.js"></script>
+<script src="chart3.js"></script>
+
+<!--Jquery JS link for collapsible sidebar on click (bar)-->
+<script>
+  $(document).ready(function(){
+    $("#toggle-sidebar").click(function(){
+    $(".sidebar").toggleClass("collapsed")
+    $("header , .main-content").toggleClass("slide-left")
+    })
+  })
+</script>
+
+
+<!--Dropdown sidebar js-->
+<script>
+function toggleCollapsible(link) {
+  var content = link.nextElementSibling;
+  if (content.style.display === "block") {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
