@@ -1,6 +1,6 @@
 var ctx = document.getElementById('doughnut').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'pie',
     data: {
         labels: ['open', 'search', 'close'],
         datasets: [{
