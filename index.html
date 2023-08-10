@@ -30,20 +30,21 @@ body
 .sidebar {
     width: 200px;
     height: 100vh;
-    background-color: rgb(250, 254, 254);
+    background-color: rgb(29, 30, 30);
     box-shadow: 0 0 8px rgb(230, 230, 230); 
     overflow: hidden; 
     overflow-y: auto;
     position: fixed; 
     padding: 15px;
     transition: width 0.3s ease;
+    border-radius: 10px;
 }
 
 .sidebar a {
   padding: 20px 15px; 
   text-decoration: none;
   font-size: 20px;
-  color: pink;
+  color: rgb(232, 224, 228);
   display: block;
 }
 
@@ -56,7 +57,7 @@ body
   position: relative; 
   background-color: white;
   min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(234, 231, 231, 0.2);
   z-index: 1;
 
 }
@@ -79,6 +80,10 @@ body
 .logo {
     text-align: center; 
     font-size: 10px; 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+    overflow: hidden; 
 }
 
 .avtar {
@@ -86,9 +91,15 @@ body
 }
 
 .avtar-img { 
-    position: fixed;
-    padding-top: 10px;
-    cursor: pointer;
+  position: fixed;
+  top: 115px; /* Adjust the value to move the image down */
+  left: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: white;
+  width: 50px; 
+  height: 50px;
+  overflow: hidden;
 }
 
 .nav-link {
@@ -97,7 +108,7 @@ body
 }
 
 .sidebar a:hover {
-  color: rgb(177, 75, 158);
+  color: rgb(79, 65, 171);
 }
 
 .name-pos {
@@ -105,7 +116,7 @@ body
   padding-bottom: 2px;
   text-align: left; 
   padding-left: 75px;
-  color: pink;
+  color: rgb(242, 237, 238);
 }
 
 .hr-line {
@@ -218,7 +229,7 @@ body
   padding: 5px 10px;
   text-decoration: none;
   display: block;
-  color: rgb(144, 226, 239);
+  color: rgb(197, 203, 208);
 }
 
 
@@ -269,7 +280,7 @@ header .head_inner {
     text-align: center;
     font-size: 22px;
     color: white;
-    background-color: pink;
+    background-color: rgb(10, 9, 9);
     border: none;
     cursor: pointer;
 }
@@ -289,11 +300,11 @@ header .head_inner {
 
 .left-part ul li span i {
     font-size: 20px;
-    color: pink;
+    color: rgb(10, 9, 10);
 }
 
 .left-part ul li span:hover {
-    color: rgb(203, 132, 203);
+    color: rgb(23, 21, 23);
 }
 
 .have_dots span {
@@ -307,12 +318,12 @@ header .head_inner {
     right: -14px;
     width: 10px;
     height: 10px;
-    background-color: green;
+    background-color: rgb(221, 30, 30);
     border-radius: 60px;
 }
 
 .fa.fa-envelope, .fa.fa-bells ,.fa.fa-list{
-    color: pink;
+    color: rgb(21, 17, 17);
     background-color: white;
     border-radius: 50%;
     padding: 10px; 
@@ -320,25 +331,25 @@ header .head_inner {
   }
 
   .fa.fa-envelope:hover {
-    color: purple; 
-    background-color: #d2a1e0; 
+    color: rgb(160, 153, 160); 
+    background-color: #d5cfd7; 
   }
 
   .fa.fa-bell:hover {
-    color: purple; 
-    background-color: #d2a1e0; 
+    color:rgb(160, 153, 160); 
+    background-color:#d5cfd7; 
     border-radius: 50%;
     padding: 10px; 
   }
 
   .fa.fa-list:hover {
-    color: purple; 
-    background-color: #d2a1e0; 
+    color:rgb(160, 153, 160); 
+    background-color:#d5cfd7; 
   }
 
   /* new */
 .fa.fa-bars {
-    color: pink;
+    color: rgb(8, 7, 7);
     background-color: white;
     border-radius: 50%;
     padding: 10px; 
@@ -346,9 +357,11 @@ header .head_inner {
   }
 
   .fa.fa-bars:hover {
-    color: purple; 
-    background-color: #d2a1e0; 
+    color:rgb(160, 153, 160); 
+    background-color: #d5cfd7; 
   }
+
+
 
                                                /* Card css */
 .main-content {
@@ -372,21 +385,21 @@ header .head_inner {
   align-items: center;
   color: #e9f7f9;
   justify-content: space-between;
-  background:  #efac83; 
+  background: #ebf0f0; 
   border-radius: 10px;
   box-shadow: 0 7px 25px 0 rgba(211, 202, 202, 0.08);
 }
 
 .card:nth-child(2) {
-  background: #e0d09e;
+  background: #ebf0f0;
 }
 
 .card:nth-child(3) {
-  background: #95cbdb;
+  background: #ebf0f0;
 }
 
 .card:nth-child(4) {
-  background:#efa2c1 ;
+  background:#ebf0f0 ;
 }
 
 .card-icon {
@@ -395,12 +408,13 @@ header .head_inner {
   width: 70px;
   height: 70px;
   background-color: rgba(253, 250, 250, 0.4); 
-  color:#56b189;
+  color:#e78d33;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 
 .card-detail {
@@ -489,7 +503,7 @@ header .head_inner {
   border: none;
   outline: none;
   font-family: 'Quicksand', sans-serif;
-  font-size: 1em; 
+  font-size: 0.8em; 
   font-weight: bold;
   flex-grow: 1;
   color: #84d4b4;
@@ -858,7 +872,7 @@ header .head_inner {
   <div class="info-card">
       <div class="card">
           <div class="card-icon">
-              <span><i class="fa fa-briefcase"></i></span>
+              <span><i class="fa fa-briefcase" style="color: #1b14f1;"></i></span>
           </div>
           <div class="card-detail">
               <h4>Numbers</h4> 
@@ -869,7 +883,7 @@ header .head_inner {
 
       <div class="card">
           <div class="card-icon">
-              <span><i class="fa fa-bug"></i></span>
+              <span><i class="fa fa-bug" style="color: #0df17f;"></i></span>
           </div>
           <div class="card-detail">
               <h4>Errors</h4> 
@@ -880,7 +894,7 @@ header .head_inner {
 
       <div class="card">
           <div class="card-icon">
-              <span><i class="fa fa-money"></i></span>
+              <span><i class="fa fa-money" style="color: #ebe00e;"></i></span>
           </div>
           <div class="card-detail">
               <h4>Revenue</h4> 
@@ -891,7 +905,7 @@ header .head_inner {
 
       <div class="card">
           <div class="card-icon">
-              <span><i class="fa fa-users"></i></span>
+              <span><i class="fa fa-users" style="color: #0fe5f5;"></i></span>
           </div>
           <div class="card-detail">
               <h4>Followers</h4> 
@@ -924,27 +938,27 @@ header .head_inner {
       
       <div class="todo">
         <input class="todo-checkbox" type="checkbox">
-        <input class="todo-value" type="text" placeholder=" (empty) " value=" Organize meetings with clients"> 
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Organize meetings with clients "> <i class="fa fa-pencil" style="color: blue; font-size: 14px; margin-right: 5px;"></i> <i class="fa fa-times" style="color: red; font-size: 14px;"></i>
       </div>
 
       <div class="todo">
         <input class="todo-checkbox" type="checkbox">
-        <input class="todo-value" type="text" placeholder=" (empty) " value=" Send e-mails to clients"> 
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Send e-mails to clients "> <i class="fa fa-pencil" style="color: blue; font-size: 14px; margin-right: 5px;"></i> <i class="fa fa-times" style="color: red; font-size: 14px;"></i>
       </div>
 
       <div class="todo">
         <input class="todo-checkbox" type="checkbox">
-        <input class="todo-value" type="text" placeholder=" (empty) " value=" Create 4 invisible users"> 
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Create 4 invisible users "> <i class="fa fa-pencil" style="color: blue; font-size: 14px; margin-right: 5px;"></i> <i class="fa fa-times" style="color: red; font-size: 14px;"></i>
       </div>
 
       <div class="todo">
         <input class="todo-checkbox" type="checkbox">
-        <input class="todo-value" type="text" placeholder=" (empty) " value=" Unfollow 5 enemies from twitter"> 
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Unfollow 5 enemies from twitter "> <i class="fa fa-pencil" style="color: blue; font-size: 14px; margin-right: 5px;"></i> <i class="fa fa-times" style="color: red; font-size: 14px;"></i>
       </div>
 
       <div class="todo">
         <input class="todo-checkbox" type="checkbox">
-        <input class="todo-value" type="text" placeholder=" (empty) " value=" Completed international project"> 
+        <input class="todo-value" type="text" placeholder=" (empty) " value=" Completed international project "> <i class="fa fa-pencil" style="color: blue; font-size: 14px; margin-right: 5px;"></i> <i class="fa fa-times" style="color: red; font-size: 14px;"></i>
       </div>
 
     </div>
