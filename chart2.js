@@ -9,12 +9,12 @@ var myChart = new Chart(ctx, {
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
-                'rgba(0, 255, 0, 0.2)' 
+                'rgba(0, 255, 0, 0.2)' // Green color with 0.2 opacity
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
-                'rgba(0, 255, 0, 1)' 
+                'rgba(0, 255, 0, 1)' // Solid green border color
             ],
             borderWidth: 1
         }]
