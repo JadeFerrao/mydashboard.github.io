@@ -464,7 +464,7 @@ header .head_inner {
 
 .charts {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 3fr;
   grid-gap: 40px; 
   width: 90%;
   padding: 20px; 
@@ -490,6 +490,10 @@ header .head_inner {
   margin: auto;
 }
 
+.chart1 canvas {
+    width: 100%; /* Set canvas width to fill the container */
+    height: auto; /* Maintain the aspect ratio */
+}
 
 .custom-chart {
   background: #fff;
@@ -942,11 +946,13 @@ header .head_inner {
       <p style="text-align: center;">Last Campaign Performance <i class="fa fa-clock-o"></i></p>
       </div>
 
+
     <div class="chart1">
       <h2>Users Behavior</h2>
       <canvas id="lineChart" width="510" height="300"></canvas>
       <p style="text-align: center;">24 Hour Performance <i class="fa fa-clock-o"></i></p>
     </div>
+
 
     <div class="chart">
       <h2>2014 Sales</h2>
