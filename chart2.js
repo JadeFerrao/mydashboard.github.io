@@ -1,12 +1,12 @@
-var ctx = document.getElementById('pieChart').getContext('2d'); // Change the context ID
+var ctx = document.getElementById('pieChart').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie', // Change the chart type to 'pie'
+    type: 'pie',
     data: {
-        labels: ['Open', 'Search', 'Close'], // Labels for each dataset
+        labels: ['Open', 'Search', 'Close'],
         datasets: [
             {
                 label: 'Data',
-                data: [3, 8, 10], // Adjust the data values accordingly
+                data: [3, 8, 10],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -22,6 +22,14 @@ var myChart = new Chart(ctx, {
         ]
     },
     options: {
-        responsive: false
+        responsive: false,
+        layout: {
+            padding: {
+                left: 130,
+                right: 6,
+                top: 0,
+                bottom: 0
+            }
+        }
     }
 });
