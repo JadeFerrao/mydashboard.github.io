@@ -466,11 +466,12 @@ header .head_inner {
   display: grid;
   grid-template-columns: 2fr 3fr;
   grid-gap: 40px; 
-  width: 90%;
+  width: 95%;
   padding: 20px; 
   padding-top: 0;
   margin-top: -4px;
   margin-right: 10px;
+
 }
 
 .chart{
@@ -479,7 +480,6 @@ header .head_inner {
   border-radius: 10px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06); 
   width: 100%;
-  
 }
 
 .chart1{
@@ -487,12 +487,12 @@ header .head_inner {
   padding: 5px;
   border-radius: 10px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06); 
-  margin: auto;
 }
 
 .chart1 canvas {
     width: 100%; /* Set canvas width to fill the container */
     height: auto; /* Maintain the aspect ratio */
+    margin: auto;
 }
 
 .custom-chart {
@@ -500,9 +500,9 @@ header .head_inner {
   padding: 5px;
   border-radius: 10px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06); 
-  width: 60%; /* Adjust the width as needed */
   margin: 10px auto; /* Center the chart horizontally */
   margin-left: 25px;
+  width: 97%;
 }
 
 .chart h2 {
@@ -948,8 +948,8 @@ header .head_inner {
 
 
     <div class="chart1">
-      <h2>Users Behavior</h2>
-      <canvas id="lineChart" width="510" height="300"></canvas>
+      <h2 style="text-align: center;">Users Behavior</h2>
+      <canvas id="lineChart" width="570" height="300"></canvas>
       <p style="text-align: center;">24 Hour Performance <i class="fa fa-clock-o"></i></p>
     </div>
 
@@ -988,7 +988,7 @@ header .head_inner {
         <input class="todo-checkbox" type="checkbox">
         <input class="todo-value" type="text" placeholder=" (empty) " value=" Completed international project "> <i class="fa fa-pencil" style="color: blue; font-size: 14px; margin-right: 5px;"></i> <i class="fa fa-times" style="color: red; font-size: 14px;"></i>
       </div>
-      <p style="text-align: center; padding-top: 15%;">Backend Development <i class="fa fa-check"></i></p>
+      <p style="text-align: center; padding-top: 10%;">Backend Development <i class="fa fa-check"></i></p>
     </div>
 
   </div>
@@ -1029,8 +1029,3 @@ function toggleCollapsible(link) {
 
 </body>
 </html>
-
-
-
-
-
